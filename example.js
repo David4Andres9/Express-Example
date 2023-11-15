@@ -1,8 +1,7 @@
-const http= require('http')
-const fs= require('fs')  //modulo file sistem 
-const server = http.createServer((req,res)=>{
-    const read= fs.createReadStream("./static/index.html")
-    read.pipe(res)
+const express= require('express')
+const app =   express()
+app.get('/',(req, res)=>{
+    res.sendfile("./static/index.html",{
+        root:__dirname
+    })
 })
-server.listen(3000)
-console.log(`Server on port ${3000}`)
